@@ -18,8 +18,11 @@ class Replacement:
     new_lines: list[str] = field(default_factory=list)
     remove_old: bool = False
 
-def get_diffs(path_to_dir, output):
-    patch = subprocess.check_output(['git', 'diff'], cwd=path_to_dir, universal_newlines=True)
+def get_diffs(path_to_dir, output, hash):
+    command = ['git', 'diff']
+    if hash:
+        command.append(hash)
+    patch = subprocess.check_output(command, cwd=path_to_dir, universal_newlines=True)
     for diff in whatthepatch.parse_patch(patch):
         groups = []
         current_group = []
@@ -73,6 +76,9 @@ if __name__ == '__main__':
         description='Outputs patches for Lovely based on git diffs',
     )
     parser.add_argument('git_repo_directory')
+    parser.add_argument('commit_hash', nargs='?', default=None)
+
     parser.add_argument('-o', '--output', default='lovely.toml')
+
     args = parser.parse_args()
-    get_diffs(args.git_repo_directory, args.output)
+    get_diffs(args.git_repo_directory, args.output, args.commit_hash)
