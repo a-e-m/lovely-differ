@@ -1,0 +1,22 @@
+version = 1
+requires-python = ">=3.12"
+
+[[package]]
+name = "lovely-differ"
+version = "0.1.0"
+source = { virtual = "." }
+dependencies = [
+    { name = "whatthepatch" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "whatthepatch", specifier = ">=1.0.7" }]
+
+[[package]]
+name = "whatthepatch"
+version = "1.0.7"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/06/28/55bc3e107a56fdcf7d5022cb32b8c21d98a9cc2df5cd9f3b93e10419099e/whatthepatch-1.0.7.tar.gz", hash = "sha256:9eefb4ebea5200408e02d413d2b4bc28daea6b78bb4b4d53431af7245f7d7edf", size = 34612 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/8e/93/af1d6ccb69ab6b5a00e03fa0cefa563f9862412667776ea15dd4eece3a90/whatthepatch-1.0.7-py3-none-any.whl", hash = "sha256:1b6f655fd31091c001c209529dfaabbabdbad438f5de14e3951266ea0fc6e7ed", size = 11964 },
+]
