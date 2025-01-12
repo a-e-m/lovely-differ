@@ -8,6 +8,7 @@ import patches
 
 HEADER = '''[manifest]
 version = "1.0.0"
+dump_lua = true
 priority = 0
 '''
 
