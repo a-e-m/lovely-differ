@@ -2,24 +2,26 @@ PATTERN_PATCH = """
 [[patches]]
 [patches.pattern]
 target = "{}"
-pattern = "{}"
+pattern = {}
 position = "{}"
 payload = {}
 match_indent = true
 times = 1
 """
 
-SINGLE_LINE_PAYLOAD = "'{}'"
+SINGLE_LINE_PAYLOAD = "'''{}'''"
 
 MULTI_LINE_PAYLOAD = """'''
 {}
 '''"""
 
-def pattern_patch(target, pattern, position, payload):
-    lines = len(payload)
-    payload = '\n'.join(line.strip() for line in payload)
+def get_formatted_code(code):
+    lines = len(code)
+    code = '\n'.join(line.line for line in code)
     if lines > 1:
-        payload = MULTI_LINE_PAYLOAD.format(payload)
+        return MULTI_LINE_PAYLOAD.format(code)
     else:
-        payload = SINGLE_LINE_PAYLOAD.format(payload)
-    return PATTERN_PATCH.format(target, pattern.strip(), position, payload)
+        return SINGLE_LINE_PAYLOAD.format(code)
+
+def pattern_patch(target, pattern, position, payload):
+    return PATTERN_PATCH.format(target, get_formatted_code(pattern), position, get_formatted_code(payload))
