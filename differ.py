@@ -47,7 +47,7 @@ def get_previous_unique_line(commit_hash, base_path, file_path, replace_changes,
         line_index -= 1
 
 def get_diffs(path_to_dir, output, commit_hash, patch_file):
-    command = ['git', 'diff']
+    command = ['git', 'diff', '--diff-algorithm=myers']
     if commit_hash:
         command.append(commit_hash)
     if patch_file:
