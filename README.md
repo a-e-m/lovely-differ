@@ -7,7 +7,7 @@ This is a Python that's meant to generate diffs for [Lovely](https://github.com/
 You'll need to install [`whatthepatch`](https://pypi.org/project/whatthepatch/) using `pip` or a similar tool (I personally have been using [`uv`](https://github.com/astral-sh/uv))
 
 # Usage
-`python3 differ.py PATH_TO_GIT_DIRECTORY [COMMIT_HASH]`. This will generate a `lovely.toml` file. You can also pass `--output PATH_TO_LOVELY_FILE` to generate the file at a different path. You can also pass `--patch PATH_TO_PATH_FILE` to provide your own patch file.
+`python3 differ.py PATH_TO_GIT_DIRECTORY [COMMIT_HASH]`, where passing a commit hash is optional. This will generate a `lovely.toml` file. You can also pass `--output PATH_TO_LOVELY_FILE` to generate the `lovely.toml` file at a different path. You can also pass `--patch PATH_TO_PATH_FILE` to provide your own patch file.
 
 # Notes
 
